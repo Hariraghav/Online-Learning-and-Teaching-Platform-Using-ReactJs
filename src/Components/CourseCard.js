@@ -1,5 +1,11 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { Card, Grid, IconButton, makeStyles } from "@material-ui/core";
+import {
+  Card,
+  Grid,
+  IconButton,
+  makeStyles,
+  Snackbar,
+} from "@material-ui/core";
 import { CardActions } from "@material-ui/core";
 import { CardContent } from "@material-ui/core";
 import { CardMedia } from "@material-ui/core";
@@ -11,6 +17,7 @@ import { useAuth } from "../AuthContext";
 import firebase from "firebase/app";
 import FavoriteSharpIcon from "@material-ui/icons/FavoriteSharp";
 import FavoriteBorderSharpIcon from "@material-ui/icons/FavoriteBorderSharp";
+import { Alert } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -28,6 +35,15 @@ function CourseCard({ id, name, description, image, video, test }) {
   const [enrolla, setEnrolla] = useState([]);
   const [wisha, setWisha] = useState([]);
   const [wish, setWish] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   const handleEnroll = () => {
     console.log("hello");
@@ -99,6 +115,12 @@ function CourseCard({ id, name, description, image, video, test }) {
       setWish(false);
     }
   };
+  const handlelink = (e) => {
+    if (!enrollStatus) {
+      e.preventDefault();
+      setOpen(true);
+    }
+  };
 
   return (
     <React.Fragment>
@@ -146,6 +168,7 @@ function CourseCard({ id, name, description, image, video, test }) {
                       test: test,
                     },
                   }}
+                  onClick={handlelink}
                 >
                   VIEW
                 </Link>
@@ -180,6 +203,11 @@ function CourseCard({ id, name, description, image, video, test }) {
           </CardActions>
         </Card>
       </Grid>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          Enroll the course to view the content
+        </Alert>
+      </Snackbar>
     </React.Fragment>
   );
 }

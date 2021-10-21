@@ -28,6 +28,7 @@ import Courses from "./Courses";
 import CategoryWiseCourses from "./categoryWiseCourses";
 import MyLearning from "./MyLearning";
 import WishList from "./Wishlist";
+import Studentprofile from "./Studentprofile";
 
 const useStyles = makeStyles((theme) => ({}));
 function Home(props) {
@@ -44,6 +45,7 @@ function Home(props) {
           <Route path="/mylearning" component={MyLearning} />
           <Route path="/wishlist" component={WishList} />
           <Route path="/test" component={Test} />
+          <Route path="/profile" component={Studentprofile} />
         </Switch>
       </div>
     </Router>

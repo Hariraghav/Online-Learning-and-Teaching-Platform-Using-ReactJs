@@ -226,6 +226,14 @@ function Topnav(props) {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
+            <MenuItem onClick={handleClose}>
+              <Link
+                to="/profile"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                My Profile
+              </Link>
+            </MenuItem>
             <MenuItem onClick={(handleClose, handlelogout)}>Logout</MenuItem>
           </Menu>
         </Toolbar>
