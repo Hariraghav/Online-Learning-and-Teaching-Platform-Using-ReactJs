@@ -12,6 +12,9 @@ import {
 } from "@material-ui/core";
 import { TabContext, TabList, TabPanel } from "@material-ui/lab";
 import { Assessment } from "@material-ui/icons";
+import { useAuth } from "../AuthContext";
+import { db } from "../fire";
+
 const useStyles = makeStyles((theme) => ({
   video: {
     marginRi: theme.spacing(0),
@@ -28,6 +31,19 @@ function Courses(props) {
     window.location.href = loc.state.test;
     return null;
   };
+  const [name, setName] = useState();
+  const { currentUser } = useAuth();
+  const getName = () => {
+    db.collection("users")
+      .doc(currentUser.uid)
+      .get()
+      .then((doc) => {
+        setName(doc.data().name);
+      });
+  };
+  useEffect(() => {
+    getName();
+  }, []);
 
   return (
     <div>

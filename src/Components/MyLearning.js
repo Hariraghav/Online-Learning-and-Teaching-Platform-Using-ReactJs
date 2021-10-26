@@ -4,6 +4,7 @@ import CourseCard from "./CourseCard";
 import { db } from "../fire";
 import { useLocation } from "react-router";
 import { useAuth } from "../AuthContext";
+import { Alert } from "@material-ui/lab";
 function MyLearning(props) {
   const [courses, setCourses] = useState([]);
   const { logout, currentUser } = useAuth();
@@ -27,21 +28,38 @@ function MyLearning(props) {
         );
       });
   };
-  return (
-    <div style={{ marginTop: "75px" }}>
-      <Grid container spacing={2}>
-        {courses.map((courses) => (
-          <CourseCard
-            name={courses.name}
-            description={courses.description}
-            id={courses.id}
-            image={courses.image}
-            video={courses.video}
-          />
-        ))}
-      </Grid>
-    </div>
-  );
+  if (courses.length > 0) {
+    return (
+      <div style={{ marginTop: "75px" }}>
+        <Grid container spacing={2}>
+          {courses.map((courses) => (
+            <CourseCard
+              name={courses.name}
+              description={courses.description}
+              id={courses.id}
+              image={courses.image}
+              video={courses.video}
+            />
+          ))}
+        </Grid>
+      </div>
+    );
+  } else {
+    return (
+      <div style={{ marginTop: "200px" }}>
+        <Alert
+          style={{
+            width: "250px",
+
+            margin: "auto",
+          }}
+          severity="info"
+        >
+          Please enroll in a course to start learnng!
+        </Alert>
+      </div>
+    );
+  }
 }
 
 export default MyLearning;

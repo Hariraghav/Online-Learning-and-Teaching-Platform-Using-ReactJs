@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import CourseCard from "./CourseCard";
 import { db } from "../fire";
 import { useLocation } from "react-router";
+import { Alert } from "@material-ui/lab";
 function CategoryWiseCourses(props) {
   const [courses, setCourses] = useState([]);
   const loc = useLocation();
@@ -25,21 +26,38 @@ function CategoryWiseCourses(props) {
         );
       });
   };
-  return (
-    <div style={{ marginTop: "75px" }}>
-      <Grid container spacing={2}>
-        {courses.map((courses) => (
-          <CourseCard
-            name={courses.name}
-            description={courses.description}
-            id={courses.id}
-            image={courses.image}
-            video={courses.video}
-          />
-        ))}
-      </Grid>
-    </div>
-  );
+  if (courses.length > 0) {
+    return (
+      <div style={{ marginTop: "75px" }}>
+        <Grid container spacing={2}>
+          {courses.map((courses) => (
+            <CourseCard
+              name={courses.name}
+              description={courses.description}
+              id={courses.id}
+              image={courses.image}
+              video={courses.video}
+            />
+          ))}
+        </Grid>
+      </div>
+    );
+  } else {
+    return (
+      <div style={{ marginTop: "200px" }}>
+        <Alert
+          style={{
+            width: "250px",
+
+            margin: "auto",
+          }}
+          severity="info"
+        >
+          No course is available yet in this category!
+        </Alert>
+      </div>
+    );
+  }
 }
 
 export default CategoryWiseCourses;
