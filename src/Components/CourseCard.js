@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CourseCard({ id, name, description, image, video, test }) {
+function CourseCard({ id, name, description, image, video, test, author }) {
   const classes = useStyles();
   const { currentUser } = useAuth();
   const [enrollStatus, setEnrollStatus] = useState(false);
@@ -166,6 +166,7 @@ function CourseCard({ id, name, description, image, video, test }) {
                       description: description,
                       video: video,
                       test: test,
+                      author: author,
                     },
                   }}
                   onClick={handlelink}

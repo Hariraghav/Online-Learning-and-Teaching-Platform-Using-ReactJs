@@ -29,6 +29,8 @@ import CategoryWiseCourses from "./categoryWiseCourses";
 import MyLearning from "./MyLearning";
 import WishList from "./Wishlist";
 import Studentprofile from "./Studentprofile";
+import BrainTeaser from "./BrainTeaser";
+import Chat from "./Chat";
 
 const useStyles = makeStyles((theme) => ({}));
 function Home(props) {
@@ -40,12 +42,14 @@ function Home(props) {
         <Topnav></Topnav>
         <Switch>
           <Route exact path="/" component={HomeBody}></Route>
+          <Route path="/brainteaser" component={BrainTeaser} />
           <Route path="/courses" component={Courses} />
           <Route path="/categorywise" component={CategoryWiseCourses} />
           <Route path="/mylearning" component={MyLearning} />
           <Route path="/wishlist" component={WishList} />
           <Route path="/test" component={Test} />
           <Route path="/profile" component={Studentprofile} />
+          <Route path="/chat" component={Chat} />
         </Switch>
       </div>
     </Router>

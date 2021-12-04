@@ -79,6 +79,7 @@ function HomeBody(props) {
           image: doc.data().image,
           video: doc.data().video,
           test: doc.data().test,
+          author: doc.data().author,
         }))
       );
     });
@@ -116,6 +117,7 @@ function HomeBody(props) {
               image={courses.image}
               video={courses.video}
               test={courses.test}
+              author={courses.author}
             />
           ))}
         </Grid>

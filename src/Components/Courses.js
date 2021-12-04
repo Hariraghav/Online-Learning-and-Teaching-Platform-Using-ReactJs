@@ -107,7 +107,7 @@ function Courses(props) {
                 color="primary"
               />
             </TabPanel>
-            <TabPanel value="3"></TabPanel>
+            <TabPanel value="3">Author Name : {loc.state.author}</TabPanel>
           </Box>
         </TabContext>
       </Box>

@@ -32,10 +32,10 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     marginLeft: theme.spacing(7),
-    width: 500,
+    width: 450,
   },
   lbutton: {
-    marginLeft: theme.spacing(25),
+    marginLeft: theme.spacing(5),
   },
   wbutton: {
     marginLeft: theme.spacing(3),
@@ -204,6 +204,22 @@ function Topnav(props) {
             style={{ textTransform: "none" }}
           >
             Wishlist
+          </Button>
+          <Button
+            component={Link}
+            to="/brainteaser"
+            className={classes.wbutton}
+            style={{ textTransform: "none" }}
+          >
+            Brain Teaser
+          </Button>
+          <Button
+            component={Link}
+            to="/chat"
+            className={classes.wbutton}
+            style={{ textTransform: "none" }}
+          >
+            Chat
           </Button>
 
           <IconButton onClick={handleClick} className={classes.picon}>
