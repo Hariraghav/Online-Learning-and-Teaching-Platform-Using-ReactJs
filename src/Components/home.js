@@ -38,7 +38,7 @@ function Home(props) {
 
   return (
     <Router>
-      <div>
+      <div style={{}}>
         <Topnav></Topnav>
         <Switch>
           <Route exact path="/" component={HomeBody}></Route>

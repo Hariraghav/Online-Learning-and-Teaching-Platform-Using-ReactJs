@@ -35,7 +35,7 @@ function Courses(props) {
   const { currentUser } = useAuth();
   const getName = () => {
     db.collection("users")
-      .doc(currentUser.uid)
+      .doc(loc.state.author)
       .get()
       .then((doc) => {
         setName(doc.data().name);
@@ -107,7 +107,7 @@ function Courses(props) {
                 color="primary"
               />
             </TabPanel>
-            <TabPanel value="3">Author Name : {loc.state.author}</TabPanel>
+            <TabPanel value="3">Author Name : {name}</TabPanel>
           </Box>
         </TabContext>
       </Box>

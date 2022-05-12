@@ -47,6 +47,7 @@ export default function AddCourse() {
   const [dvideo, setDvideo] = useState("none");
   const [valert, setValert] = useState("none");
   const [ialert, setIalert] = useState("none");
+  const [falert, setFalert] = useState("none");
   const [submit, setSubmit] = useState(true);
   const [categories, setCategories] = useState([]);
   const { logout, currentUser } = useAuth();
@@ -118,6 +119,9 @@ export default function AddCourse() {
     );
   };
   console.log(imageurl);
+  const togglefalert = () => {
+    setFalert("flex");
+  };
   const uploadVideo = (e) => {
     setDvideo("block");
     const file = e.target.files[0];
@@ -299,11 +303,23 @@ export default function AddCourse() {
                   color="primary"
                   style={{ marginTop: "40px" }}
                   variant="outlined"
-                  onClick={setCourse}
+                  onClick={() => {
+                    setCourse();
+                    togglefalert();
+                  }}
+
                   /* disabled={submit} */
                 >
                   Finalize
                 </Button>
+                <Box mt={2}>
+                  <Alert
+                    style={{ display: falert, width: "10%", margin: "auto" }}
+                    severity="success"
+                  >
+                    <AlertTitle>Success!</AlertTitle>
+                  </Alert>
+                </Box>
               </Box>
             </Box>
           </TabPanel>

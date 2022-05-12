@@ -213,14 +213,14 @@ function Topnav(props) {
           >
             Brain Teaser
           </Button>
-          <Button
+         {/*  <Button
             component={Link}
             to="/chat"
             className={classes.wbutton}
             style={{ textTransform: "none" }}
           >
             Chat
-          </Button>
+          </Button> */}
 
           <IconButton onClick={handleClick} className={classes.picon}>
             {/* <AccountCircleIcon/> */}
