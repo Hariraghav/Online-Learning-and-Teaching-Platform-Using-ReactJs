@@ -27,7 +27,7 @@ function InstructorBody(props) {
         <img
           className={classes.image}
           width="100%"
-          height="552"
+          height="653 "
           src={image2}
         ></img>
         <div
